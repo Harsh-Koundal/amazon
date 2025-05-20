@@ -1,3 +1,4 @@
+import { cart } from "../data/cart.js";
 let productsHTML= ''
 products.forEach((products) =>{
    productsHTML += `
@@ -23,7 +24,7 @@ products.forEach((products) =>{
             $${(products.priceCents/100).toFixed(2)}
           </div>
 
-          <div class="product-quantity-container">
+          <div class="product-quantity-container js-product-container">
             <select>
               <option selected value="1">1</option>
               <option value="2">2</option>
