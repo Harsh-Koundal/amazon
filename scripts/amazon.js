@@ -64,7 +64,8 @@ let cartQuantity = 0;
         cart.forEach((cartItem)=>{
            cartQuantity += cartItem.quantity
         })
-        document.querySelector('.cartQuantity').innerHTML = ` ${cartQuantity}`
+        document.querySelector('.cartQuantity').innerHTML =  cartQuantity
+        console.log(cartQuantity)
 }
 document.querySelectorAll('.js-add-to-cart').forEach((button)=>{
     button.addEventListener('click',() =>{
