@@ -1,13 +1,17 @@
 let cart;
 
-try {
+
+
+function saveToStorage() {
+  localStorage.setItem('cart', JSON.stringify(cart));
+}
+
+export function loadFromStorage(){
+  try {
   cart = JSON.parse(localStorage.getItem('cart')) || [];
 } catch (error) {
   cart = [];
 }
-
-function saveToStorage() {
-  localStorage.setItem('cart', JSON.stringify(cart));
 }
 
 export function getCart() {
