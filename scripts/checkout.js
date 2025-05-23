@@ -1,7 +1,8 @@
 import {
   getCart,
   removeFromCart,
-  updateDeliveryOption
+  updateDeliveryOption,
+  loadFromStorage
 } from "../data/cart.js";
 
 import { products, getProduct } from "../data/products.js";
@@ -12,6 +13,9 @@ import {
   getDeliveryOption
 } from "../data/deliveryOptions.js";
 
+// Load the cart from localStorage first
+loadFromStorage();
+
 function renderOrderSummary() {
   const cart = getCart();
   let cartSummaryHTML = '';
@@ -20,7 +24,6 @@ function renderOrderSummary() {
     const matchingProduct = products.find(product => product.id === cartItem.productId);
     const deliveryOption = deliveryOptions.find(option => option.id === cartItem.deliveryOptionsId);
 
-    // Skip invalid cart items
     if (!matchingProduct || !deliveryOption) {
       console.warn("Invalid cart item found:", cartItem);
       return;
@@ -179,7 +182,14 @@ function renderPriceSummary() {
   `;
 
   document.querySelector('.js-payment-summary').innerHTML = paymentsummaryHTML;
+  const checkout = `
+        <div class="CheckOutItems ">
+          <p>Total(${cart.length}items)</p>
+        </div>
+  `
+  document.querySelector('.CheckOutItems').innerHTML = checkout
 }
 
-// Initial render
+// ✅ Call renderOrderSummary AFTER loading the cart
 renderOrderSummary();
+
