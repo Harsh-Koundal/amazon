@@ -209,7 +209,7 @@
   margin-top: 11px;
   margin-bottom: 15px;
 }
-.CheckOutItems p{
+.CheckOutItems h2{
   width: 100%;
   display: flex;
   justify-content: center;
@@ -219,4 +219,7 @@
   font-size: larger;
   right: 50px;
   font-weight: 700;
+}
+.CheckOutItems h2 p{
+  color: #60bfbf;;
 }

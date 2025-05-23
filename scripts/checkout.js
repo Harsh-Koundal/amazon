@@ -184,12 +184,32 @@ function renderPriceSummary() {
   document.querySelector('.js-payment-summary').innerHTML = paymentsummaryHTML;
   const checkout = `
         <div class="CheckOutItems ">
-          <p>Total(${cart.length}items)</p>
+          <h2>Checkout <p>(${cart.length}items)</p></h2>
         </div>
   `
   document.querySelector('.CheckOutItems').innerHTML = checkout
 }
 
 // ✅ Call renderOrderSummary AFTER loading the cart
-renderOrderSummary();
 
+// import ('../data/backend-practice.js')
+
+function loading() {
+  console.log("loading...");
+  renderOrderSummary();
+  // Call()
+}
+
+
+
+
+console.log('start Promise')
+new Promise((resolve) =>{
+  resolve()
+  console.log('promise')
+}).then(() =>{
+  return new Promise ((resolve)=>{
+    loading()
+    resolve();
+  })
+})
